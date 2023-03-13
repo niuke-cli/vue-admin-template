@@ -1,6 +1,17 @@
 # NIUKE 后台管理模版
 
-`Vue3 + TypeScript + Element-Plus`
+`Vue3 + TypeScript + NaiveUI`
+
+## TODO
+
+- 待完成
+  - 路由（静态路由、动态路由、导航栏）
+  - Axios 请求封装
+  - Pinia 引入
+  - Mock 接口模拟
+  - TsLint
+  - SCSS 预编译器
+  - 页面加载进度
 
 ## `Git` 提交规范
 
@@ -17,3 +28,8 @@
 - `ci` 持续集成
 - `types` 类型定义文件更改
 - `wip` 开发中
+
+## 版本
+
+- node v16.15.1
+- yarn 1.22.19
