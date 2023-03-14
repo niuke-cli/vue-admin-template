@@ -2,23 +2,31 @@
   <n-space vertical>
     <n-layout>
       <n-layout-header bordered style="height: 50px">
-        Header Header Header
-        <n-menu mode="horizontal" :options="menuOptions" />
+        <div style="display: flex">
+          <div style="width: 220px">
+            <a href="/">
+              <img src="@/assets/vue.svg" alt />
+            </a>
+          </div>
+          <!-- <n-menu mode="horizontal" :options="menuOptions" /> -->
+        </div>
       </n-layout-header>
-      <n-layout has-sider style="height: calc(100vh - 100px)">
+      <n-layout has-sider style="height: calc(100vh - 50px)">
         <n-layout-sider
           bordered
           show-trigger
           collapse-mode="width"
           :collapsed-width="64"
-          :width="240"
+          :width="220"
           :native-scrollbar="false"
         >
           <n-menu :collapsed-width="64" :collapsed-icon-size="22" :options="menuOptions" />
         </n-layout-sider>
-        <n-layout>1</n-layout>
+        <n-layout>
+          <router-view></router-view>
+        </n-layout>
       </n-layout>
-      <n-layout-footer bordered style="height: 50px">Footer Footer Footer</n-layout-footer>
+      <!-- <n-layout-footer bordered style="height: 50px">Footer Footer Footer</n-layout-footer> -->
     </n-layout>
   </n-space>
 </template>
@@ -26,81 +34,24 @@
 <script lang="ts" setup>
 import { NIcon } from 'naive-ui'
 import { BookOutline as BookIcon, PersonOutline as PersonIcon, WineOutline as WineIcon } from '@vicons/ionicons5'
+import { RouterLink } from 'vue-router'
 const renderIcon = (icon: Component) => {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
 const menuOptions = [
   {
-    label: '且听风吟',
-    key: 'hear-the-wind-sing',
-    icon: renderIcon(BookIcon),
-  },
-  {
-    label: '1973年的弹珠玩具',
-    key: 'pinball-1973',
-    icon: renderIcon(BookIcon),
-    disabled: true,
-    children: [
-      {
-        label: '鼠',
-        key: 'rat',
-      },
-    ],
-  },
-  {
-    label: '寻羊冒险记',
-    key: 'a-wild-sheep-chase',
-    disabled: true,
-    icon: renderIcon(BookIcon),
-  },
-  {
-    label: '舞，舞，舞',
-    key: 'dance-dance-dance',
-    icon: renderIcon(BookIcon),
-    children: [
-      {
-        type: 'group',
-        label: '人物',
-        key: 'people',
-        children: [
-          {
-            label: '叙事者',
-            key: 'narrator',
-            icon: renderIcon(PersonIcon),
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            name: 'console',
           },
-          {
-            label: '羊男',
-            key: 'sheep-man',
-            icon: renderIcon(PersonIcon),
-          },
-        ],
-      },
-      {
-        label: '饮品',
-        key: 'beverage',
-        icon: renderIcon(WineIcon),
-        children: [
-          {
-            label: '威士忌',
-            key: 'whisky',
-          },
-        ],
-      },
-      {
-        label: '食物',
-        key: 'food',
-        children: [
-          {
-            label: '三明治',
-            key: 'sandwich',
-          },
-        ],
-      },
-      {
-        label: '过去增多，未来减少',
-        key: 'the-past-increases-the-future-recedes',
-      },
-    ],
+        },
+        { default: () => '回家' }
+      ),
+    key: 'console',
+    icon: renderIcon(BookIcon),
   },
 ]
 </script>
