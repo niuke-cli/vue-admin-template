@@ -30,7 +30,9 @@
 	import { reactive } from 'vue'
 	import { useLoginApi } from '@/api/login';
 	import { useRouter } from 'vue-router';
+	import { useUserInfo } from '@/stores/userInfo';
 	const useLogin = useLoginApi();
+	const useUserInfoConfig= useUserInfo();
 	const route = useRouter();
 	const state = reactive({
 		isShowPassword: false,
@@ -55,6 +57,7 @@
 			content: '欢迎回来'+res.data.realName,
 			duration:3000,
 		})
+		useUserInfoConfig.setUserInfos(res.data);
 		route.replace('/')
 	}
 </script>
