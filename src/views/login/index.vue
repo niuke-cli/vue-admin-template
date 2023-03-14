@@ -50,16 +50,10 @@
 			</div>
 		</div>
 	</div>
-	<!-- <div>登录页</div> -->
-	<!-- <Account></Account>
-	<Mobile></Mobile>
-	<Scan></Scan> -->
-	<!-- <n-button @click="submit">登录</n-button> -->
 </template>
 
 <script setup lang="ts">
 	import { reactive ,defineAsyncComponent} from 'vue'
-	// import { useLoginApi } from '@/api/login';
 	//引入组件
 	const Account = defineAsyncComponent(() => import('@/views/login/component/account.vue'));
 	const Mobile = defineAsyncComponent(() => import('@/views/login/component/mobile.vue'));
@@ -68,23 +62,6 @@
 		tabsActiveName: 'account',
 		isScan: false,
 	});
-	// const useLogin = useLoginApi();
-	// const state = reactive({
-	// 	ruleForm: {
-	// 		userName: '15396601126',
-	// 		password: 'aa23703792',
-	// 	},
-	// });
-	// const toLogin=()=>{
-	// 	return useLogin.signIn({
-	// 		account:state.ruleForm.userName,
-	// 		password:state.ruleForm.password,
-	// 	})
-	// }
-	// const submit= async () => {
-	// 	const res = await toLogin();
-	// 	console.log(res);
-	// }
 </script>
 
 <style scoped lang="scss">
@@ -147,6 +124,8 @@
 		}
 		.login-right {
 			width: 700px;
+			display:flex;
+			align-items: center;
 			.login-right-warp {
 				border: 1px solid #79bbff;
 				border-radius: 3px;

@@ -29,7 +29,9 @@
 <script setup lang="ts">
 	import { reactive } from 'vue'
 	import { useLoginApi } from '@/api/login';
+	import { useRouter } from 'vue-router';
 	const useLogin = useLoginApi();
+	const route = useRouter();
 	const state = reactive({
 		isShowPassword: false,
 		ruleForm: {
@@ -49,7 +51,11 @@
 	}
 	const submit= async ()=>{
 		const res = await toLogin();
-		console.log(res);
+		window.$notification.success({
+			content: '欢迎回来'+res.data.realName,
+			duration:3000,
+		})
+		route.replace('/')
 	}
 </script>
 

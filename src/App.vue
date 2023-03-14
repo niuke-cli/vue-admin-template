@@ -4,6 +4,9 @@
 	<n-message-provider>
 		<MessageApi></MessageApi>
 	</n-message-provider>
+	<n-notification-provider>
+		<NotificationApi></NotificationApi>
+	</n-notification-provider>
 	<!-- <MessageApi></MessageApi> -->
     <!-- <n-card>
       <n-space>
@@ -16,7 +19,8 @@
 
 <script lang="ts" setup>
 import { darkTheme, GlobalTheme } from 'naive-ui'
-import MessageApi  from '@/components/message/message-api.vue'
+import MessageApi from '@/components/message/message-api.vue'
+import NotificationApi from '@/components/message/notification-api.vue'
 const theme = ref<GlobalTheme | null>(null)
 </script>
 <style>
