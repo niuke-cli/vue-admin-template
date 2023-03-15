@@ -2,7 +2,7 @@ const defaultRouter = [
 	{
 		path: '/login',
 		name: 'login',
-		component: () => import('@/views/login.vue')
+		component: () => import('@/views/login/index.vue')
 	},
 	{
 		path: '/404',
