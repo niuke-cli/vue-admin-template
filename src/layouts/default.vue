@@ -45,12 +45,26 @@ const menuOptions = [
         RouterLink,
         {
           to: {
-            name: 'console',
+            path: '/console',
           },
         },
         { default: () => '回家' }
       ),
     key: 'console',
+    icon: renderIcon(BookIcon),
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            path: '/demo',
+          },
+        },
+        { default: () => 'Demo' }
+      ),
+    key: 'demo',
     icon: renderIcon(BookIcon),
   },
 ]
