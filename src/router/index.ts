@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import defaultRouter from './defaultRoute'
-
 const modulesRouters: Array<RouteRecordRaw> = [
 	{
 		path: '/console',

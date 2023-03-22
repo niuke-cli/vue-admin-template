@@ -15,11 +15,11 @@ const service: AxiosInstance = axios.create({
 
 // 添加请求拦截器
 service.interceptors.request.use((config: AxiosRequestConfig) => {
-		// 在发送请求之前做些什么 token
-		const userInfo=useUserInfo();
-		config.headers!['a-token']=userInfo.userInfos.token;
-		return config;
-	},
+	// 在发送请求之前做些什么 token
+	const userInfo = useUserInfo();
+	config.headers!['a-token'] = userInfo.userInfos.token;
+	return config;
+},
 	(error) => {
 		// 对请求错误做些什么
 		return Promise.reject(error);
@@ -36,9 +36,9 @@ service.interceptors.response.use(
 			if (res.code === 403) {
 				window.location.href = '/'; // 去登录页
 				window.$message.error('你已被登出，请重新登录')
-			}else{
+			} else {
 				window.$message.error(res.message)
-				
+
 			}
 			return Promise.reject(service.interceptors.response);
 		} else {
