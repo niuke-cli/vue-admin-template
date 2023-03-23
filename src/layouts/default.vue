@@ -8,7 +8,7 @@
               <img src="@/assets/vue.svg" alt />
             </a>
           </div>
-          <!-- <n-menu mode="horizontal" :options="menuOptions" /> -->
+          <n-menu mode="horizontal" :options="arrayRecursion(useMenu.menuList)" />
         </div>
       </n-layout-header>
       <n-layout has-sider style="height: calc(100vh - 50px)">
@@ -20,7 +20,7 @@
           :width="220"
           :native-scrollbar="false"
         >
-          <n-menu :collapsed-width="64" :collapsed-icon-size="22" :options="menuOptions" />
+          <n-menu :collapsed-width="64" :collapsed-icon-size="22" :options="arrayRecursion(useMenu.menuList)" />
         </n-layout-sider>
         <n-layout>
           <router-view></router-view>
@@ -38,20 +38,35 @@ import { RouterLink } from 'vue-router'
 const renderIcon = (icon: Component) => {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
-const menuOptions = [
-  {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: {
-            name: 'console',
+
+import { menuInfo } from '@/stores/menu'
+const useMenu = menuInfo()
+
+// 递归处理树形结构数据函数
+const arrayRecursion = (array) => {
+  array.forEach((item) => {
+    item.label = () => {
+      return h(RouterLink,
+          {
+            to: {
+              path: item.path,
+            },
           },
-        },
-        { default: () => '回家' }
-      ),
-    key: 'console',
-    icon: renderIcon(BookIcon),
-  },
-]
+          { default: () => item.menuName })
+    };
+    item.key = item.menuName;
+    item.icon = renderIcon(BookIcon);
+    if (item.children && item.children.length > 0) {
+    item.label = item.menuName
+      arrayRecursion(item.children)
+    } else {
+
+      delete item.children
+      return
+    }
+  })
+  return array
+}
+
+arrayRecursion(useMenu.menuList)
 </script>
