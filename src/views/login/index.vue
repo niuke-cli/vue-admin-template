@@ -53,8 +53,6 @@
 </template>
 
 <script setup lang="ts">
-	import { reactive ,defineAsyncComponent} from 'vue'
-	//引入组件
 	const Account = defineAsyncComponent(() => import('@/views/login/component/account.vue'));
 	const Mobile = defineAsyncComponent(() => import('@/views/login/component/mobile.vue'));
 	const Scan = defineAsyncComponent(() => import('@/views/login/component/scan.vue'));

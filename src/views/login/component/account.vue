@@ -53,6 +53,7 @@
 	}
 	const submit= async ()=>{
 		const res = await toLogin();
+		useUserInfoConfig.isLogin = true
 		window.$notification.success({
 			content: '欢迎回来'+res.data.realName,
 			duration:3000,

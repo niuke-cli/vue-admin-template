@@ -14,14 +14,48 @@
       "DOM"
     ],
     "skipLibCheck": true,
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@helpers/*": [
+        "./src/helpers/*"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@vueUtils/*": [
+        "./src/vueUtils/*"
+      ],
+      "@layouts/*": [
+        "./src/layouts/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@views/*": [
+        "./src/views/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+      "@mixins/*": [
+        "./src/mixins/*"
+      ],
+      "@store/*": [
+        "./src/store/*"
+      ]
+    }
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "./auto-imports.d.ts"
+    "./auto-imports.d.ts",
+    "src/mock/index.js"
   ],
   "references": [
     {

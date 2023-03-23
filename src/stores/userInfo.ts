@@ -11,7 +11,8 @@ declare interface UserInfosState<T = any> {
 		roles: string[];
 		token: string;
 		usrSign: string;
-	}
+	} ,
+	isLogin: boolean;
 }
 /**
  * 用户信息
@@ -30,7 +31,8 @@ export const useUserInfo = defineStore('userInfo', {
 			roles: [],
 			token: '',
 			usrSign: '',
-		}
+		},
+		isLogin: false,
 	}),
 	actions: {
 		async setUserInfos(data: UserInfosState) {
