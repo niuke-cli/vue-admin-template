@@ -101,6 +101,25 @@ export default [
 						children: [],
 					},
 					{
+						id: 2077,
+						menuName: 'EchartsDemo',
+						ignoreKeepAlive: false,
+						menuName2: null,
+						i18nCode: '',
+						parentId: 0,
+						pids: '0',
+						perms: 'boxIndex',
+						orderNum: 100,
+						path: '/allOrders/index',
+						component: 'box/index',
+						pathType: 1,
+						menuType: 2,
+						visible: false,
+						icon: '',
+						createTime: '2022-06-27 09:42:37',
+						children: [],
+					},
+					{
 						id: 2065,
 						menuName: '箱详情',
 						ignoreKeepAlive: false,
@@ -1308,6 +1327,7 @@ export default [
 							},
 						],
 					},
+					
 					{
 						id: 2018,
 						menuName: '系统',

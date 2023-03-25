@@ -13,6 +13,11 @@ const defaultRouter = [
 		path: '/:pathMatch(.*)',
 		redirect: '/404',
 	},
+	{
+		path: '/EchartsDemo',
+		name:'EchartsDemo',
+		component: () => import('@/views/EchartsDemo/index.vue'),
+	},
 ]
 
 export default defaultRouter
