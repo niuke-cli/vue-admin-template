@@ -1,4 +1,6 @@
 
+
+
 const chartsConfig = {
 /**
    * 饼图
@@ -7,10 +9,22 @@ pie: (pieOption) => {
   console.log(pieOption);
     const pieRadius = ['50%', '30%'];
     const pieCenter = ['45%', '25%'];
+
+
+    // 标题校验  是否存在标题关键字
+    const titleCheck = (Obj) => {
+     if(Obj.hasOwnProperty('title')){
+      return Obj.title
+     }else {
+      return ''
+     }
+    }
+    
     const option = {
       title: {
-        text: pieOption.title,
+        text:titleCheck(pieOption),
         left: 'center',
+        top:'30px'
       },
       tooltip: {
         trigger: 'item',
@@ -23,7 +37,7 @@ pie: (pieOption) => {
     },
       series: [
         {
-            name: pieOption.title,
+            name: titleCheck(pieOption),
             type: 'pie',
             radius: pieRadius,
             center: pieCenter,
@@ -45,6 +59,14 @@ pie: (pieOption) => {
     return option;
   },
 bar: (barOption) => {
+ // 标题校验  是否存在标题关键字
+ const titleCheck = (Obj) => {
+  if(Obj.hasOwnProperty('title')){
+   return Obj.title
+  }else {
+   return ''
+  }
+ }
     const option = {
       tooltip: {
         trigger: 'axis',
@@ -55,43 +77,35 @@ bar: (barOption) => {
           }
         }
       },
-      toolbox: {
-        show: true,
-        feature: {
-          mark: { show: true },
-          dataView: { show: true, readOnly: false },
-          magicType: { show: true, type: ['line', 'bar'] },
-          restore: { show: true },
-          saveAsImage: { show: true }
-        }
-      },
       calculable: true,
       legend: {
-        data: ['Growth', 'Budget 2011', 'Budget 2012'],
+        data: titleCheck(barOption),
         itemGap: 5
       },
       grid: {
         top: '12%',
         left: '1%',
         right: '10%',
-        containLabel: true
+        containLabel: true,
+        // width:'100%',
+        // height:'50%'
       },
       xAxis: [
         {
           type: 'category',
-          data: obama_budget_2012.names
+          data: barOption.time
         }
       ],
       yAxis: [
         {
           type: 'value',
-          name: 'Budget (million USD)',
-          axisLabel: {
-            formatter: function (a) {
-              a = +a;
-              return isFinite(a) ? echarts.format.addCommas(+a / 1000) : '';
-            }
-          }
+          name: titleCheck(barOption),
+          // axisLabel: {
+          //   formatter: function (a) {
+          //     a = +a;
+          //     return isFinite(a) ? echarts.format.addCommas(+a / 1000) : '';
+          //   }
+          // }
         }
       ],
       dataZoom: [
@@ -115,18 +129,7 @@ bar: (barOption) => {
           left: '93%'
         }
       ],
-      series: [
-        {
-          name: 'Budget 2011',
-          type: 'bar',
-          data: obama_budget_2012.budget2011List
-        },
-        {
-          name: 'Budget 2012',
-          type: 'bar',
-          data: obama_budget_2012.budget2012List
-        }
-      ]
+      series: barOption.series
     };
     return option;
   },

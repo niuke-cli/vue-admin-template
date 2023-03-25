@@ -5,7 +5,7 @@ export const getPieData = () => {
 }
 
 export const getBarData = () => {
-	return request.get('http://127.0.0.1:4523/m1/2483123-0-default/getEchartsData/pie')
+	return request.get('https://mock.apifox.cn/m1/2483123-0-default/getEchartsData/bar')
 }
 
 export const getLineData = () => {

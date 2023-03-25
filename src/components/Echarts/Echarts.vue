@@ -9,27 +9,16 @@
     v-if="type === 'lines'"
   />
 </template>
-  <script setup>
+<script setup>
+
 import chartsConfig from "./Echarts";
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
 import { PieChart, BarChart, LineChart } from "echarts/charts";
-import {
-  TitleComponent,
-  TooltipComponent,
-  LegendComponent,
-} from "echarts/components";
+import {ToolboxComponent,GridComponent,DataZoomComponent,TitleComponent,TooltipComponent,LegendComponent,} from "echarts/components";
 import VChart, { THEME_KEY } from "vue-echarts";
 import { ref, provide } from "vue";
-use([
-  CanvasRenderer,
-  PieChart,
-  BarChart,
-  LineChart,
-  TitleComponent,
-  TooltipComponent,
-  LegendComponent,
-]);
+use([ToolboxComponent,GridComponent,DataZoomComponent,CanvasRenderer,PieChart,BarChart,LineChart,TitleComponent,TooltipComponent,LegendComponent,]);
 provide(THEME_KEY, "dark");
 
 const pieData = ref({});
@@ -69,7 +58,7 @@ const props = defineProps({
  * @param pie图数据结构
  * {
     "title": "天争之称观",
-    "CompanyHeadcount": [
+    "series": [
         {
             "value": 75,
             "name": "林"
@@ -93,40 +82,49 @@ const pieOption = (value) => {
   }
 };
 /**
- * @param bar图数据结构
+ * @param bar图接收数据结构
  * {
-    "title": "天争之称观",
+  "data": {
+    "time": [
+      "string",
+      "string"
+    ],
     "series": [
-        {
-            "value": 75,
-            "name": "林"
-        },
-        {
-            "value": 97,
-            "name": "七"
-        },
-        {
-            "value": 86,
-            "name": "比"
-        }
+      {
+        "name": "string",
+        "type": "bar",
+        "data": [
+          0,
+          0
+        ]
+      },
+      {
+        "name": "string",
+        "type": "bar",
+        "data": [
+          0,
+          0
+        ]
+      }
     ]
+  }
 }
 */
-const barOption = () => {
+const barOption = (value) => {
   if (value !== undefined) {
     console.log(value);
-    barData.value = chartsConfig.bar(value);
+    barData.value = chartsConfig.bar(value.data);
     console.log(barData);
   }
 };
-const lineOption = () => {
+const lineOption = (value) => {
   if (value !== undefined) {
     console.log(value);
     lineData.value = chartsConfig.line(value);
     console.log(lineData);
   }
 };
-const linesOption = () => {
+const linesOption = (value) => {
   if (value !== undefined) {
     console.log(value);
     linesData.value = chartsConfig.lines(value);
@@ -200,7 +198,8 @@ watch(
   
   <style scoped>
 .chart {
-  height: 100vh;
+  height: 100% !important;
+  width: 100% !important;
 }
 </style>
   
