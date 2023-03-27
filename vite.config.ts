@@ -22,7 +22,8 @@ export default defineConfig({
             'useLoadingBar'
           ]
         }
-      ]
+      ],
+      dts: './auto-imports.d.ts',
     }),
     Components({
       resolvers: [NaiveUiResolver()]
