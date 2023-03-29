@@ -132,6 +132,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/web-bluetooth@^0.0.16":
+  "integrity" "sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ=="
+  "resolved" "https://registry.npmjs.org/@types/web-bluetooth/-/web-bluetooth-0.0.16.tgz"
+  "version" "0.0.16"
+
 "@vicons/antd@^0.12.0":
   "integrity" "sha512-C0p6aO1EmGG1QHrqgUWQS1No20934OdWSRQshM5NIDK5H1On6tC26U0hT6Rmp40KfUsvhvX5YW8BoWJdNFifPg=="
   "resolved" "https://registry.npmjs.org/@vicons/antd/-/antd-0.12.0.tgz"
@@ -285,6 +290,28 @@
   "integrity" "sha512-BHGyyGN3Q97EZx0taMQ+OLNuZcW3d37ZEVmEAyeoA9ERdGvm9Irc/0Fua8SNyOtV1w6BS4q25wbMzJujO9HIfQ=="
   "resolved" "https://registry.npmjs.org/@vue/shared/-/shared-3.2.47.tgz"
   "version" "3.2.47"
+
+"@vueuse/core@*", "@vueuse/core@^9.13.0":
+  "integrity" "sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw=="
+  "resolved" "https://registry.npmjs.org/@vueuse/core/-/core-9.13.0.tgz"
+  "version" "9.13.0"
+  dependencies:
+    "@types/web-bluetooth" "^0.0.16"
+    "@vueuse/metadata" "9.13.0"
+    "@vueuse/shared" "9.13.0"
+    "vue-demi" "*"
+
+"@vueuse/metadata@9.13.0":
+  "integrity" "sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ=="
+  "resolved" "https://registry.npmjs.org/@vueuse/metadata/-/metadata-9.13.0.tgz"
+  "version" "9.13.0"
+
+"@vueuse/shared@9.13.0":
+  "integrity" "sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw=="
+  "resolved" "https://registry.npmjs.org/@vueuse/shared/-/shared-9.13.0.tgz"
+  "version" "9.13.0"
+  dependencies:
+    "vue-demi" "*"
 
 "acorn@^8.8.2":
   "integrity" "sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw=="
@@ -475,6 +502,14 @@
   "integrity" "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ=="
   "resolved" "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz"
   "version" "1.0.0"
+
+"echarts@^5.4.1":
+  "integrity" "sha512-2W3vw3oI2tWJdyAz+b8DuWS0nfXtSDqlDmqgin/lfzbkB01cuMEN66KWBlmur3YMp5nEDEEt5s23pllnAzB4EA=="
+  "resolved" "https://registry.npmjs.org/echarts/-/echarts-5.4.2.tgz"
+  "version" "5.4.2"
+  dependencies:
+    "tslib" "2.3.0"
+    "zrender" "5.4.3"
 
 "ee-first@1.1.1":
   "integrity" "sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow=="
@@ -933,6 +968,11 @@
   dependencies:
     "picomatch" "^2.2.1"
 
+"resize-detector@^0.3.0":
+  "integrity" "sha512-R/tCuvuOHQ8o2boRP6vgx8hXCCy87H1eY9V5imBYeVNyNVpuL9ciReSccLj2gDcax9+2weXy3bc8Vv+NRXeEvQ=="
+  "resolved" "https://registry.npmjs.org/resize-detector/-/resize-detector-0.3.0.tgz"
+  "version" "0.3.0"
+
 "resolve@^1.19.0", "resolve@^1.22.1":
   "integrity" "sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw=="
   "resolved" "https://registry.npmjs.org/resolve/-/resolve-1.22.1.tgz"
@@ -1046,6 +1086,11 @@
   "integrity" "sha512-M8RGFoKtZ8dF+iwJfAJTOH/SM4KluKOKRJpjCMhI8bG3qB74zrFoArKZ62ll0Fr3mqkMJiQOmWYkdYgDeITYQg=="
   "resolved" "https://registry.npmjs.org/treemate/-/treemate-0.3.11.tgz"
   "version" "0.3.11"
+
+"tslib@2.3.0":
+  "integrity" "sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg=="
+  "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.3.0.tgz"
+  "version" "2.3.0"
 
 "typescript@*", "typescript@^4.9.3", "typescript@>=4.4.4":
   "integrity" "sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g=="
@@ -1169,6 +1214,19 @@
   "resolved" "https://registry.npmjs.org/vue-demi/-/vue-demi-0.13.11.tgz"
   "version" "0.13.11"
 
+"vue-demi@^0.13.2":
+  "integrity" "sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A=="
+  "resolved" "https://registry.npmjs.org/vue-demi/-/vue-demi-0.13.11.tgz"
+  "version" "0.13.11"
+
+"vue-echarts@^6.5.4":
+  "integrity" "sha512-pLJTk2hfhauoWdmiZGXByAtcO6bpfnAS+jkJqKimSBSV5I5ckh2nka9duLlIVbTvQOEb2tFa0XiXjACQNcEfpA=="
+  "resolved" "https://registry.npmjs.org/vue-echarts/-/vue-echarts-6.5.4.tgz"
+  "version" "6.5.4"
+  dependencies:
+    "resize-detector" "^0.3.0"
+    "vue-demi" "^0.13.2"
+
 "vue-router@4":
   "integrity" "sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ=="
   "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-4.1.6.tgz"
@@ -1192,7 +1250,7 @@
     "@volar/vue-language-core" "1.2.0"
     "@volar/vue-typescript" "1.2.0"
 
-"vue@^2.6.14 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.11", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.45", "vue@2 || 3", "vue@3.2.47":
+"vue@^2.6.12 || ^3.1.1", "vue@^2.6.14 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.11", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.45", "vue@2 || 3", "vue@3.2.47":
   "integrity" "sha512-60188y/9Dc9WVrAZeUVSDxRQOZ+z+y5nO2ts9jWXSTkMvayiWxCWOWtBQoYjLeccfXkiiPZWAHcV+WTPhkqJHQ=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.47.tgz"
   "version" "3.2.47"
@@ -1225,3 +1283,10 @@
   "integrity" "sha512-kyDivFZ7ZM0BVOUteVbDFhlRt7Ah/CSPwJdi8hBpkK7QLumUqdLtVfm/PX/hkcnrvr0i77fO5+TjZ94Pe+C9iw=="
   "resolved" "https://registry.npmjs.org/webpack-virtual-modules/-/webpack-virtual-modules-0.5.0.tgz"
   "version" "0.5.0"
+
+"zrender@5.4.3":
+  "integrity" "sha512-DRUM4ZLnoaT0PBVvGBDO9oWIDBKFdAVieNWxWwK0niYzJCMwGchRk21/hsE+RKkIveH3XHCyvXcJDkgLVvfizQ=="
+  "resolved" "https://registry.npmjs.org/zrender/-/zrender-5.4.3.tgz"
+  "version" "5.4.3"
+  dependencies:
+    "tslib" "2.3.0"

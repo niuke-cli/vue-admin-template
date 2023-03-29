@@ -1,5 +1,3 @@
-import { type } from "os"
-
 export default [
 	{
 		url: "/api/auth/account",
@@ -45,12 +43,12 @@ export default [
 				code: 0,
 				message: "ok",
 				data: {
-					title:'@cword',
-					'series|10':[{
-						value:'@integer(60, 100)',
+					title: '@cword',
+					'series|10': [{
+						value: '@integer(60, 100)',
 						name: '@cname'
 					}]
-			},
+				},
 			}
 		}
 	},
@@ -62,10 +60,10 @@ export default [
 				code: 0,
 				message: "ok",
 				data: {
-					'time|10':['@time("H:m:s")'],
-					'series|10':[{
-						'data|10':['@integer(200, 1000)'],
-						 name: '@cname'
+					'time|10': ['@time("H:m:s")'],
+					'series|10': [{
+						'data|10': ['@integer(200, 1000)'],
+						name: '@cname'
 					}]
 				},
 			}
@@ -79,12 +77,12 @@ export default [
 				code: 0,
 				message: "ok",
 				data: {
-					'time|10':['@time("H:m:s")'],
-					'series|10':[{
-						'data|10':['@integer(200, 1000)'],
+					'time|10': ['@time("H:m:s")'],
+					'series|10': [{
+						'data|10': ['@integer(200, 1000)'],
 						name: '@cname'
 					}]
-			},
+				},
 			}
 		}
 	},

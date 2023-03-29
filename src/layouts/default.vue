@@ -8,8 +8,9 @@
               <img style="width: 80%" src="@/assets/logo-black.svg" alt />
             </a>
           </div>
-          <div style="flex: 1"></div>
-          <!-- <n-menu mode="horizontal" :options="useMenu.menuList" @update:value="clickMenuItem" /> -->
+          <div style="flex: 1">
+            <HMenu />
+          </div>
           <User />
         </div>
       </n-layout-header>
@@ -45,6 +46,7 @@
 <script lang="ts" setup>
 import Tags from './components/tags.vue'
 import User from './components/user.vue'
+import HMenu from './components/h-menu.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 import { menuInfo } from '@/stores/menu'
@@ -57,11 +59,6 @@ function clickMenuItem(key: string) {
   } else {
     useMenu.nowMenu = key
     router.push({ path: key })
-    let route = router.getRoutes().find((item) => item.path === key)
-    // useMenu.addTag({
-    //   name: route?.name,
-    //   title: route?.meta.title,
-    // })
   }
 }
 </script>
