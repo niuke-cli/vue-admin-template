@@ -20,7 +20,7 @@ let routers: Array<RouteRecordRaw> = [
 		redirect: '/console',
 		component: () => import('@/layouts/default.vue'),
 		children: [
-			... modulesRouters
+			...modulesRouters
 		]
 	},
 	...defaultRouter
@@ -53,10 +53,20 @@ router.beforeEach(async (to, from, next) => {
 		const redirectPath = (from.query.redirect || to.path) as string;
 		const redirect = decodeURIComponent(redirectPath);
 		const nextData = to.path === redirect ? { ...to, replace: true } : { path: redirect };
+		console.log('to', to)
 		next(nextData);
 	} else {
 		next()
 	}
+})
+
+router.afterEach((to, from, next) => {
+	const useMenu = menuInfo()
+	useMenu.addTag({
+		name: to?.name,
+		title: to?.meta.title,
+	})
+	useMenu.nowTag = to.name as string
 })
 
 export default router

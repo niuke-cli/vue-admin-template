@@ -3,6 +3,7 @@ import { getMenuListApi } from '@/api/system'
 import { RouteRecordName } from 'vue-router'
 import { routerGenerator, asyncImportRoute } from '@/utils/router'
 import { modulesRouters } from '@/router'
+import { TagsType } from '@/type/tags'
 /**
  * 菜单信息
  * @methods 
@@ -10,7 +11,12 @@ import { modulesRouters } from '@/router'
 export const menuInfo = defineStore('menuInfo', {
 	state: () => ({
 		menuList: modulesRouters,
-		nowMenu: '/console' as RouteRecordName
+		nowMenu: '/console' as RouteRecordName,
+		nowTag: 'console',
+		tagList: [{
+			name: 'console',
+			title: '控制台'
+		}] as Array<TagsType>
 	}),
 	actions: {
 		async getMenuList() {
@@ -24,7 +30,16 @@ export const menuInfo = defineStore('menuInfo', {
 				// 合并菜单
 				this.menuList = this.menuList.concat(routeList)
 				return routeList
-			} catch (error) {}
+			} catch (error) { }
+		},
+		addTag(value: TagsType) {
+			let isExist = this.tagList.some(item => item.name === value.name)
+			if (isExist) return
+			this.tagList.push(value)
+		},
+		delTag(value: TagsType) {
+			let tagIndex = this.tagList.findIndex(item => item.name === value.name)
+			this.tagList.splice(tagIndex, 1)
 		}
 	},
 	// persist: true

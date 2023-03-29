@@ -1,5 +1,5 @@
 <template>
-  <n-config-provider :theme="theme" :theme-overrides="themeOverrides">
+  <n-config-provider :theme="theme" :theme-overrides="theme ? '' : themeOverrides">
     <router-view></router-view>
     <n-message-provider>
       <MessageApi></MessageApi>
@@ -20,9 +20,5 @@ const theme = ref<GlobalTheme | null>(null)
 <style>
 body {
   margin: 0px !important;
-  --n-item-height: 50px !important;
-
-}
-:root {
 }
 </style>
