@@ -6,3 +6,5 @@ const pinia = createPinia();
 
 // 导出
 export default pinia;
+
+

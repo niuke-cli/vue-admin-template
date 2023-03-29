@@ -4,6 +4,7 @@ import { RouteRecordName } from 'vue-router'
 import { routerGenerator, asyncImportRoute } from '@/utils/router'
 import { modulesRouters } from '@/router'
 import { TagsType } from '@/type/tags'
+import pinia from '@/stores';
 /**
  * 菜单信息
  * @methods 
@@ -46,5 +47,9 @@ export const menuInfo = defineStore('menuInfo', {
 })
 
 
+// Need to be used outside the setup
+export function useDesignSettingWithOut() {
+	return menuInfo(pinia);
+}
 
 

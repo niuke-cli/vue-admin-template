@@ -8,7 +8,9 @@
               <img style="width: 80%" src="@/assets/logo-black.svg" alt />
             </a>
           </div>
-          <n-menu mode="horizontal" :options="useMenu.menuList" @update:value="clickMenuItem" />
+          <div style="flex: 1"></div>
+          <!-- <n-menu mode="horizontal" :options="useMenu.menuList" @update:value="clickMenuItem" /> -->
+          <User />
         </div>
       </n-layout-header>
       <n-layout has-sider class="visual-content-height">
@@ -42,6 +44,7 @@
 
 <script lang="ts" setup>
 import Tags from './components/tags.vue'
+import User from './components/user.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 import { menuInfo } from '@/stores/menu'
