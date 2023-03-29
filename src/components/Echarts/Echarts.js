@@ -157,10 +157,10 @@ lines: (linesOption) => {
       data:legendArr(linesOption)
     },
     grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
+      top: '12%',
+      left: '1%',
+      right: '8%',
+      containLabel: true,
     },
     xAxis: [
       {
