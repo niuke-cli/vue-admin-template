@@ -1,9 +1,12 @@
-const defaultRouter = [
+export const defaultRouter = [
 	{
 		path: '/login',
 		name: 'login',
 		component: () => import('@/views/login/index.vue')
 	},
+]
+
+export const errorRouter = [
 	{
 		path: '/404',
 		name: '404',
@@ -19,5 +22,3 @@ const defaultRouter = [
 		component: () => import('@/views/EchartsDemo/index.vue'),
 	},
 ]
-
-export default defaultRouter

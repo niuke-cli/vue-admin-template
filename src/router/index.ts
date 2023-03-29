@@ -1,13 +1,9 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import defaultRouter from './defaultRoute'
+import { defaultRouter, errorRouter } from './defaultRoute'
 import { useUserInfo } from '@/stores/userInfo';
 import { menuInfo } from '@/stores/menu';
-const modulesRouters: Array<RouteRecordRaw> = [
-	{
-		path: '/console',
-		name: 'console',
-		component: () => import('@/views/console/index.vue')
-	},
+export const modulesRouters: Array<RouteRecordRaw> = [
+
 ]
 const modules: Record<string, any> = import.meta.glob('./modules/**/*.ts', { eager: true })
 // 自动导入modules文件下路由
@@ -23,49 +19,44 @@ let routers: Array<RouteRecordRaw> = [
 		name: '/',
 		redirect: '/console',
 		component: () => import('@/layouts/default.vue'),
-		children: modulesRouters
+		children: [
+			... modulesRouters
+		]
 	},
 	...defaultRouter
 ]
 const router = createRouter({
 	history: createWebHistory(),
 	routes: routers,
+	strict: true,
+	scrollBehavior: () => ({ left: 0, top: 0 }),
 })
 
-// 递归处理树形结构数据函数
-const arrayRecursion = (array) => {
-	array.forEach((item) => {
-		item.name = item.perms;
-		item.component = () => import('@/views/demo/index.vue');
-		item.meta = {
-			title: item.menuName
-		}
-		if (item.children && item.children.length > 0) {
-			arrayRecursion(item.children)
-		} else {
-			delete item.children
-			return
-		}
-	})
-	return array
-}
-
-router.beforeEach((to, form, next) => {
+const registerRouteFresh = ref(true) // 定义标识，记录路由是否添加
+router.beforeEach(async (to, from, next) => {
 	const userInfo = useUserInfo()
 	const useMenu = menuInfo()
+	useMenu.nowMenu = to.fullPath
 	if (!userInfo.isLogin && to.path !== "/login") {
 		next("/login")
+	}
+	if (registerRouteFresh.value) {
+		const routes = await useMenu.getMenuList() || [];
+		// 动态添加可访问路由表
+		routes.forEach((item) => {
+			router.addRoute(item as unknown as RouteRecordRaw);
+		});
+		errorRouter.forEach(item => {
+			router.addRoute(item)
+		})
+		registerRouteFresh.value = false
+		const redirectPath = (from.query.redirect || to.path) as string;
+		const redirect = decodeURIComponent(redirectPath);
+		const nextData = to.path === redirect ? { ...to, replace: true } : { path: redirect };
+		next(nextData);
 	} else {
-		useMenu.getMenuList()
-		console.log('routers', routers)
-		routers[0].children = arrayRecursion(useMenu.menuList)
-		router.addRoute(routers[0])
-		console.log('arrayRecursion(useMenu.menuList)',arrayRecursion(useMenu.menuList))
-		console.log('router', router.getRoutes())
-		// console.log('useMenu.menuList', useMenu.menuList)
 		next()
 	}
-	// console.log('userInfo.isLogin',userInfo.isLogin)
 })
 
 export default router

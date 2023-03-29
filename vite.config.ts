@@ -21,8 +21,9 @@ export default defineConfig({
             'useNotification',
             'useLoadingBar'
           ]
-        }
-      ]
+        },
+      ],
+      dts: 'src/auto-import.d.ts'
     }),
     Components({
       resolvers: [NaiveUiResolver()]
@@ -31,6 +32,14 @@ export default defineConfig({
       mockPath: "./src/mock/"
     }),
   ],
+  //配置sass
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "@/style/base.scss";'
+      }
+    }
+  },
   // 配置根路径
   resolve: {
     // ↓路径别名，主要是这部分
