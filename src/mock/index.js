@@ -67,7 +67,7 @@ export default [
 						'data|10':['@integer(200, 1000)'],
 						name: '@cname'
 					}]
-			},
+				},
 			}
 		}
 	},
