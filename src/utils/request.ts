@@ -35,9 +35,9 @@ service.interceptors.response.use(
 			// `token` 过期或者账号已在别处登录
 			if (res.code === 403) {
 				window.location.href = '/'; // 去登录页
-				window.$message.error('你已被登出，请重新登录')
+				window['$message'].error('你已被登出，请重新登录')
 			} else {
-				window.$message.error(res.message)
+				window['$message'].error(res.message)
 
 			}
 			return Promise.reject(service.interceptors.response);
@@ -48,12 +48,12 @@ service.interceptors.response.use(
 	(error) => {
 		// 对响应错误做点什么
 		if (error.message.indexOf('timeout') != -1) {
-			window.$message.error('网络超时');
+			window['$message'].error('网络超时');
 		} else if (error.message == 'Network Error') {
-			window.$message.error('网络连接错误');
+			window['$message'].error('网络连接错误');
 		} else {
-			if (error.response.data) window.$message.error(error.response.statusText);
-			else window.$message.error('接口路径找不到');
+			if (error.response.data) window['$message'].error(error.response.statusText);
+			else window['$message'].error('接口路径找不到');
 		}
 		return Promise.reject(error);
 	}
