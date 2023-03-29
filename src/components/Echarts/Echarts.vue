@@ -76,9 +76,7 @@ const props = defineProps({
 */
 const pieOption = (value) => {
   if (value !== undefined && value !== null && value !== {}) {
-    // console.log(value);
     pieData.value = chartsConfig.pie(value);
-    // console.log(pieData);
   }
 };
 /**
@@ -146,7 +144,6 @@ watch(
         lineOption(newVal);
         break;
       case "lines":
-        console.log('****',newVal);
         linesOption(newVal);
         break;
     }
