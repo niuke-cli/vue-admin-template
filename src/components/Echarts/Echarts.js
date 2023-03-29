@@ -1,6 +1,4 @@
 
-
-
 const chartsConfig = {
 /**
    * 饼图
@@ -36,7 +34,7 @@ pie: (pieOption) => {
         // data: pieOption.legend,
     },
       series: [
-        {
+        {   top:'100px',
             name: titleCheck(pieOption),
             type: 'pie',
             radius: pieRadius,
@@ -53,7 +51,7 @@ pie: (pieOption) => {
         },
       ],
       grid: {
-        height:'50%'
+        height:'100%'
       }
     };
     return option;
@@ -133,47 +131,65 @@ bar: (barOption) => {
     };
     return option;
   },
-line: (pieOption) => {
-  console.log(pieOption);
-    const pieRadius = ['50%', '30%'];
-    const pieCenter = ['45%', '25%'];
-    const option = {
-      title: {
-        text: pieOption.title,
-        left: 'center',
-      },
-      tooltip: {
-        trigger: 'item',
-        formatter: '{a} <br/>{b} : {c} ({d}%)',
-      },
-      legend: {
-        // orient: 'vertical',
-        left: 'left',
-        // data: pieOption.legend,
+lines: (linesOption) => {
+  
+  const legendArr = (linesOption) => {
+    const legend= []
+    linesOption.series.forEach(element => {
+      legend.push(element.name) 
+    });
+    return legend
+  }
+    const option = { 
+    title: {
+      text: 'Stacked Area Chart'
     },
-      series: [
-        {
-            name: pieOption.title,
-            type: 'pie',
-            radius: pieRadius,
-            center: pieCenter,
-            // Arr
-            data: pieOption.CompanyHeadcount,
-            emphasis: {
-              itemStyle: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)',
-              },
-            },
-        },
-      ],
-      grid: {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: {
+          backgroundColor: '#6a7985'
+        }
       }
+    },
+    legend: {
+      data:legendArr(linesOption)
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [
+      {
+        type: 'category',
+        boundaryGap: false,
+        data: linesOption.time
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value'
+      }
+    ],
+    dataZoom: [
+      {
+        type: 'inside',
+        start: 0,
+        end: 10
+      },
+      {
+        start: 0,
+        end: 10
+      }
+    ],
+    series:linesOption.series
     };
     return option;
-  },
-lines: (pieOption) => {
+  },  
+line: (pieOption) => {
   console.log(pieOption);
     const pieRadius = ['50%', '30%'];
     const pieCenter = ['45%', '25%'];

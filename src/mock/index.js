@@ -1,3 +1,5 @@
+import { type } from "os"
+
 export default [
 	{
 		url: "/api/auth/account",
@@ -32,6 +34,57 @@ export default [
 						'job|1': ['前端工程师', '后端工程师', 'UI工程师', '需求工程师']
 					}]
 				},
+			}
+		}
+	},
+	{
+		url: "/api/getPieData",
+		method: "get",
+		response: () => {
+			return {
+				code: 0,
+				message: "ok",
+				data: {
+					title:'@cword',
+					'series|10':[{
+						value:'@integer(60, 100)',
+						name: '@cname'
+					}]
+			},
+			}
+		}
+	},
+	{
+		url: "/api/getBarData",
+		method: "get",
+		response: () => {
+			return {
+				code: 0,
+				message: "ok",
+				data: {
+					'time|10':['@time("H:m:s")'],
+					'series|10':[{
+						'data|10':['@integer(200, 1000)'],
+						name: '@cname'
+					}]
+			},
+			}
+		}
+	},
+	{
+		url: "/api/getLinesData",
+		method: "get",
+		response: () => {
+			return {
+				code: 0,
+				message: "ok",
+				data: {
+					'time|10':['@time("H:m:s")'],
+					'series|10':[{
+						'data|10':['@integer(200, 1000)'],
+						name: '@cname'
+					}]
+			},
 			}
 		}
 	},
