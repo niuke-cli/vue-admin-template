@@ -65,7 +65,7 @@ export default [
 					'time|10':['@time("H:m:s")'],
 					'series|10':[{
 						'data|10':['@integer(200, 1000)'],
-						name: '@cname'
+						 name: '@cname'
 					}]
 				},
 			}

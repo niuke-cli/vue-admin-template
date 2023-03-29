@@ -9,9 +9,6 @@
     <div class="a">
       <ECharts :type="'lines'" :Option="result3"/>
     </div>
-    <!-- <div class="a">
-      <ECharts :type="'pie'" :Option="result"/>
-    </div> -->
     </div>
     
     
@@ -27,17 +24,14 @@
   
   getPieData().then(res =>{
       result.value = res.data
-      console.log(result.value);
   })
   
   getBarData().then(res =>{
     result2.value = res.data
-      console.log(result2.value);
   })
   
   getLinesData().then(res =>{
     result3.value = res.data
-      console.log(result3.value);
   })
   </script>
   

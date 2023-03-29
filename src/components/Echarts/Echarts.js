@@ -65,6 +65,7 @@ bar: (barOption) => {
    return ''
   }
  }
+
     const option = {
       tooltip: {
         trigger: 'axis',
@@ -132,12 +133,13 @@ bar: (barOption) => {
     return option;
   },
 lines: (linesOption) => {
-  
   const legendArr = (linesOption) => {
     const legend= []
-    linesOption.series.forEach(element => {
-      legend.push(element.name) 
-    });
+    if (linesOption.series) {
+      linesOption.series.forEach(element => {
+        legend.push(element.name) 
+      });
+    }
     return legend
   }
     const option = { 
@@ -188,47 +190,7 @@ lines: (linesOption) => {
     series:linesOption.series
     };
     return option;
-  },  
-line: (pieOption) => {
-  console.log(pieOption);
-    const pieRadius = ['50%', '30%'];
-    const pieCenter = ['45%', '25%'];
-    const option = {
-      title: {
-        text: pieOption.title,
-        left: 'center',
-      },
-      tooltip: {
-        trigger: 'item',
-        formatter: '{a} <br/>{b} : {c} ({d}%)',
-      },
-      legend: {
-        // orient: 'vertical',
-        left: 'left',
-        // data: pieOption.legend,
-    },
-      series: [
-        {
-            name: pieOption.title,
-            type: 'pie',
-            radius: pieRadius,
-            center: pieCenter,
-            // Arr
-            data: pieOption.CompanyHeadcount,
-            emphasis: {
-              itemStyle: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)',
-              },
-            },
-        },
-      ],
-      grid: {
-      }
-    };
-    return option;
-  },  
+  }, 
 }
 
 

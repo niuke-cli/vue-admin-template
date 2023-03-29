@@ -112,30 +112,22 @@ const pieOption = (value) => {
 */
 const barOption = (value) => {
   if (value !== undefined && value !== null && value !== {}) {
-    console.log(value);
-    barData.value = chartsConfig.bar(value);
-    value.series.forEach(element => {
+    if ( value.series) {
+      value.series.forEach(element => {
       element['type'] = 'bar'
     });
-    console.log(barData);
-  }
-};
-const lineOption = (value) => {
-  console.log(value);
-  if (value !== undefined && value !== null && value !== {}) {
-    console.log(value);
-    lineData.value = chartsConfig.line(value);
-    console.log(lineData);
+    }
+    barData.value = chartsConfig.bar(value);
   }
 };
 const linesOption = (value) => {
-  if (value !== undefined && value !== null && value !== {}) {
-    console.log(value.series);
-    value.series.forEach(element => {
-      element['type'] = 'line'
-    });
+  if (value.series !== undefined && value !== null && value !== {}) {
+        if ( value.series.length > 0) {
+          value.series.forEach(element => {
+          element['type'] = 'line'
+        });
+    }
     linesData.value = chartsConfig.lines(value);
-    console.log(linesData);
   }
 };
 
@@ -154,6 +146,7 @@ watch(
         lineOption(newVal);
         break;
       case "lines":
+        console.log('****',newVal);
         linesOption(newVal);
         break;
     }
