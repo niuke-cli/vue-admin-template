@@ -1,17 +1,17 @@
 <template>
   <n-space vertical>
     <n-layout>
-      <n-layout-header bordered style="height: 50px">
-        <div style="display: flex">
+      <n-layout-header bordered>
+        <div style="display:flex;height: 50px;align-items:center">
           <div style="width: 220px">
-            <a href="/">
-              <img src="@/assets/vue.svg" alt />
+            <a href="/" style="display:flex;justify-content:center;align-items:center">
+              <img style="width: 80%" src="@/assets/logo-black.svg" alt />
             </a>
           </div>
-          <n-menu mode="horizontal" :options="arrayRecursion(useMenu.menuList)" />
+          <n-menu mode="horizontal" :options="useMenu.menuList"   @update:value="clickMenuItem" />
         </div>
       </n-layout-header>
-      <n-layout has-sider style="height: calc(100vh - 50px)">
+      <n-layout has-sider class="visual-content-height">
         <n-layout-sider
           bordered
           show-trigger
@@ -20,7 +20,13 @@
           :width="220"
           :native-scrollbar="false"
         >
-          <n-menu :collapsed-width="64" :collapsed-icon-size="22" :options="arrayRecursion(useMenu.menuList)" />
+          <n-menu
+            :value="useMenu.nowMenu"
+            :collapsed-width="64"
+            :collapsed-icon-size="22"
+            :options="useMenu.menuList"
+            @update:value="clickMenuItem"
+          />
         </n-layout-sider>
         <n-layout>
           <router-view></router-view>
@@ -32,41 +38,18 @@
 </template>
 
 <script lang="ts" setup>
-import { NIcon } from 'naive-ui'
-import { BookOutline as BookIcon, PersonOutline as PersonIcon, WineOutline as WineIcon } from '@vicons/ionicons5'
-import { RouterLink } from 'vue-router'
-const renderIcon = (icon: Component) => {
-  return () => h(NIcon, null, { default: () => h(icon) })
-}
-
+import { useRouter } from 'vue-router'
+const router = useRouter()
 import { menuInfo } from '@/stores/menu'
 const useMenu = menuInfo()
-
-// 递归处理树形结构数据函数
-const arrayRecursion = (array) => {
-  array.forEach((item) => {
-    item.label = () => {
-      return h(RouterLink,
-          {
-            to: {
-              path: item.path,
-            },
-          },
-          { default: () => item.menuName })
-    };
-    item.key = item.menuName;
-    item.icon = renderIcon(BookIcon);
-    if (item.children && item.children.length > 0) {
-    item.label = item.menuName
-      arrayRecursion(item.children)
-    } else {
-
-      delete item.children
-      return
-    }
-  })
-  return array
+const collapsed = ref(false)
+// 点击菜单
+function clickMenuItem(key: string) {
+  if (/http(s)?:/.test(key)) {
+    window.open(key)
+  } else {
+    useMenu.nowMenu = key
+    router.push({ path: key })
+  }
 }
-
-arrayRecursion(useMenu.menuList)
 </script>

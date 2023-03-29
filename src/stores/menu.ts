@@ -1,36 +1,35 @@
 import { defineStore } from "pinia";
 import { getMenuListApi } from '@/api/system'
-
-interface menuType {
-	name: string,
-	path: string,
-	title: string,
-	icon: string
-}
-
-
-
+import { RouteRecordName } from 'vue-router'
+import { routerGenerator, asyncImportRoute } from '@/utils/router'
+import { modulesRouters } from '@/router'
 /**
  * 菜单信息
  * @methods 
  */
 export const menuInfo = defineStore('menuInfo', {
 	state: () => ({
-		menuList: [] as Array<menuType>
+		menuList: modulesRouters,
+		nowMenu: '/console' as RouteRecordName
 	}),
 	actions: {
-		async addMenu(data: menuType) {
-			this.menuList.push(data);
-		},
 		async getMenuList() {
-			await getMenuListApi().then(res => {
-				this.menuList = res.data
-
-			})
+			try {
+				// 获取菜单数据
+				const { data } = await getMenuListApi()
+				// 重构菜单数据格式
+				let routeList = routerGenerator(data)
+				// 动态导入路由
+				asyncImportRoute(routeList);
+				// 合并菜单
+				this.menuList = this.menuList.concat(routeList)
+				return routeList
+			} catch (error) {}
 		}
 	},
-	persist: true
+	// persist: true
 })
+
 
 
 
