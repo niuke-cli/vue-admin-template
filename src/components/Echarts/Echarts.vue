@@ -19,8 +19,9 @@ import {ToolboxComponent,GridComponent,DataZoomComponent,TitleComponent,TooltipC
 import VChart, { THEME_KEY } from "vue-echarts";
 import { ref, provide } from "vue";
 use([ToolboxComponent,GridComponent,DataZoomComponent,CanvasRenderer,PieChart,BarChart,LineChart,TitleComponent,TooltipComponent,LegendComponent,]);
-provide(THEME_KEY, "dark");
 
+import theme from './them.json';
+provide(THEME_KEY, theme);
 const pieData = ref({});
 const barData = ref({});
 const lineData = ref({});

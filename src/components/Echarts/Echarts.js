@@ -8,7 +8,6 @@ pie: (pieOption) => {
     const pieRadius = ['50%', '30%'];
     const pieCenter = ['45%', '25%'];
 
-
     // 标题校验  是否存在标题关键字
     const titleCheck = (Obj) => {
      if(Obj.hasOwnProperty('title')){
