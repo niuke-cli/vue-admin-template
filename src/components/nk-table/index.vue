@@ -3,6 +3,7 @@
     :size="size"
     :columns="state.columns"
     :data="dataSource"
+    :loading="state.loading"
     :bordered="bordered"
     :striped="striped"
     :single-line="singleLine"
@@ -59,10 +60,11 @@ const props = withDefaults(
     min: 2,
     bordered: true,
     striped: false,
+    loading: false,
     singleLine: false,
     rowKey: (row: any) => row.id,
     pagination: () => {
-      return { page: 2 };
+      return { page: 1 };
     },
   }
 );
@@ -83,12 +85,6 @@ const handleCheck = (rowKeys: DataTableRowKey[]) => {
   emit('update:selected-row-keys', rowKeys);
 };
 
-type Song = {
-  no: number;
-  title: string;
-  length: string;
-};
-
 const createColumns = (columns: any[]) => {
   columns.forEach((item) => {
     if (item.key === 'actions') {
@@ -97,6 +93,16 @@ const createColumns = (columns: any[]) => {
   });
   return columns;
 };
+watch(
+  () => props.dataSource,
+  (dataSource) => {
+    state.loading = true;
+    setTimeout(() => {
+      state.loading = false;
+    }, 600);
+  },
+  { immediate: true }
+);
 
 watch(
   () => props.columns,
