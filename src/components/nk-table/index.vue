@@ -31,7 +31,7 @@ const props = withDefaults(
     columns: DataTableColumns[];
     /** 子节点的属性名 */
     childrenProp?: string;
-    /** 需要合并的连续列的属性名 */
+    /** 需要合并的连续列的属性名*/
     // mergeProps?: string[]
     /** 尺寸 'small' | 'medium' | 'large' */
     size?: string;
