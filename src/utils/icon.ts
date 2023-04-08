@@ -1,5 +1,5 @@
 import { NIcon } from "naive-ui";
-import { AppstoreFilled, SettingOutlined, LinkOutlined, DesktopOutlined, UngroupOutlined } from "@vicons/antd";
+import { AppstoreOutlined, SettingOutlined, LinkOutlined, DesktopOutlined, UngroupOutlined } from "@vicons/antd";
 
 
 /**
@@ -12,7 +12,7 @@ function renderIcon(icon: Component) {
 }
 //前端路由图标映射表
 export const constantRouterIcon = {
-	AppstoreFilled: renderIcon(AppstoreFilled),
+	AppstoreOutlined: renderIcon(AppstoreOutlined),
 	SettingOutlined: renderIcon(SettingOutlined),
 	LinkOutlined: renderIcon(LinkOutlined),
 	DesktopOutlined: renderIcon(DesktopOutlined),

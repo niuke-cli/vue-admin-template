@@ -9,8 +9,3 @@ import { darkTheme, GlobalTheme } from 'naive-ui'
 import themeOverrides from '@/utils/themeOverrides'
 const theme = ref<GlobalTheme | null>(null)
 </script>
-<style>
-body {
-  margin: 0px !important;
-}
-</style>

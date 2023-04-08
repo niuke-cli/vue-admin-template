@@ -6,7 +6,7 @@ const consoleRoutes = [
 		key: '/console',
 		label: '控制台',
 		name: 'console',
-		icon: constantRouterIcon['AppstoreFilled'],
+		icon: constantRouterIcon['AppstoreOutlined'],
 		component: () => import('@/views/console/index.vue'),
 	},
  ]
