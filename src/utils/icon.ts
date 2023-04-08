@@ -1,5 +1,5 @@
 import { NIcon } from "naive-ui";
-import { AppstoreOutlined, SettingOutlined, LinkOutlined, DesktopOutlined, UngroupOutlined } from "@vicons/antd";
+import { AppstoreOutlined, SettingOutlined, LinkOutlined, DesktopOutlined, UngroupOutlined, ContainerTwotone } from "@vicons/antd";
 
 
 /**
@@ -17,6 +17,7 @@ export const constantRouterIcon = {
 	LinkOutlined: renderIcon(LinkOutlined),
 	DesktopOutlined: renderIcon(DesktopOutlined),
 	UngroupOutlined: renderIcon(UngroupOutlined),
+	ContainerTwotone: renderIcon(ContainerTwotone),
 };
 
 export const JIcon = {

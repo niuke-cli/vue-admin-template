@@ -133,6 +133,26 @@ export default [
 						]
 					},
 					{
+						path: '/form',
+						key: 'form',
+						component: 'Layout',
+						meta: {
+							title: '表单设置',
+							icon: 'ContainerTwotone'
+						},
+						children: [
+							{
+								path: '/simple',
+								component: '/form/simple/index.vue',
+								key: 'simple',
+								meta: {
+									icon: '',
+									title: '简单表单'
+								},
+							},
+						]
+					},
+					{
 						path: '/inline',
 						key: 'inline',
 						component: 'Layout',
